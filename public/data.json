@@ -1,0 +1,10 @@
+{ "records":[ {"Name":"Chicago","Population":"10000","lat":"41.878114","long" :"-87.629792"},
+  {"Name":"Texas","Population":"15369","lat":"31.968599","long":"-99.901813"},
+  {"Name":"California","Population":"23598", "lat":"36.778261","long" : "-119.417932"},
+  {"Name":"New York","Population":"29365","lat":"40.712784","long" :"-74.005941"},
+  {"Name":"Michigan","Population":"38447", "lat":"44.314844","long" :"-85.602364"},
+  {"Name":"Ohio","Population":"40869","lat" :"40.417287","long" :"-82.907123" },
+  {"Name":"Indiana","Population":"53502","lat":"40.267194","long":"-86.134902"},
+  {"Name":"Minnesota","Population":"56382","lat":"46.729553","long" : "-94.685900"},
+  {"Name":"Washigton","Population":"68905","lat":"38.907192","long" :"-77.036871"},
+  {"Name":"Florida","Population":"78950","lat":"27.664827","long" :"-81.515754"} ] }
