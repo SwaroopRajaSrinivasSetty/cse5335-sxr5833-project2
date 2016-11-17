@@ -32,7 +32,7 @@ router.get('/get-data', function(req, res) {
     var db = req.db;
     var id = req.param('param1');
     var collection = db.get('sacramentoRealEstateTransactions');
-    collection.findOne({"id": parseInt(id)},{_id:0,sale_date:0,latitude:0,longitude:0},function(e,docs){
+    collection.findOne({"id": parseInt(id)},{_id:0},function(e,docs){
         res.json(docs);
     });
 });

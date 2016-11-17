@@ -37,14 +37,15 @@
 </head>
 <body>
 <h1><center>CSE5335 Project-2</center></h1>
+<h4><center>Use of MEAN Stack to display Sacramento Real Estate Transactions</center></h4>
+<h4><center>Click the Start button to know more...</center></h4>
 <br>
 <div ng-app="myApp" ng-controller="customersCtrl" class="tab">
 
     <div class="wrapper">
         <button class="btn btn-info btn-lg" ng-click="clickStartButton()">Start</button>
         <button class="btn btn-info btn-lg" ng-click="clickPauseButton()">Pause</button>
-        <h4>Use of MEAN Stack to display Sacramento Real Estate Transactions</h4>
-        <h4>Count of AJAX requests : {{i}}</h4>
+        <h5>Count of AJAX requests : {{i}}</h5>
         <br>
         </div>
 
@@ -60,6 +61,9 @@
                 <th>beds</th>
                 <th>bath</th>
                 <th>price</th>
+                <th>sale date</th>
+                <th>latitude</th>
+                <th>longitude</th>
             </tr>
             </thead>
             <tbody >
@@ -72,6 +76,9 @@
                 <td>{{x.beds}}</td>
                 <td>{{x.baths}}</td>
                 <td>{{x.price}}</td>
+                <td>{{x.sale_date}}</td>
+                <td>{{x.latitude}}</td>
+                <td>{{x.longitude}}</td>
             </tr>
             </tbody>
         </table>
@@ -115,6 +122,7 @@
         };
 
     });
+
 </script>
 
 </body>
