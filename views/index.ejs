@@ -2,7 +2,6 @@
 <html>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<!--script src ="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-animate.min.js"></script-->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
 <head>
     <style>
@@ -21,29 +20,31 @@
             position: absolute;
             top: 50%;
         }
-        .animation.ng-enter, .animation.ng-leave {
-            -webkit-transition: 1s;
+
+        .bounce {
+            animation: bounceIn 0.75s;
         }
-        .animation.ng-enter {
-            opacity: 0;
-        }
-        .animation.ng-leave {
-            opacity: 1;
-        }
-        .animation.ng-enter.ng-enter-active {
-            opacity: 1;
-        }
-        .animation.ng-leave.ng-leave-active{
-            opacity: 0;
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.25);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+            }
         }
     </style>
 </head>
 <body>
-<h1><center>CSE5335-project2</center></h1>
+<h1><center>CSE5335 Project-2</center></h1>
 <br>
 <div ng-app="myApp" ng-controller="customersCtrl" class="tab">
+
     <div class="wrapper">
-        <button class="btn btn-info btn-lg" ng-click="clickButton()">Click Me!</button>
+        <button class="btn btn-info btn-lg" ng-click="clickStartButton()">Start</button>
+        <button class="btn btn-info btn-lg" ng-click="clickPauseButton()">Pause</button>
+        <h4>Use of MEAN Stack to display Sacramento Real Estate Transactions</h4>
+        <h4>Count of AJAX requests : {{i}}</h4>
         <br>
         </div>
 
@@ -51,7 +52,6 @@
         <table class="table" ng-if = "names">
             <thead>
             <tr>
-
                 <th>ID</th>
                 <th>street</th>
                 <th>city</th>
@@ -63,7 +63,7 @@
             </tr>
             </thead>
             <tbody >
-            <tr ng-repeat="x in names" class="animation">
+            <tr ng-repeat="x in names" class="bounce">
                 <td>{{x.id}}</td>
                 <td>{{x.street}}</td>
                 <td>{{x.city}}</td>
@@ -76,27 +76,43 @@
             </tbody>
         </table>
     </div>
+
 </div>
 
 <script>
-    var i = 1;
     var app = angular.module('myApp', ['ngAnimate']);
     app.controller('customersCtrl', function($scope, $http, $interval) {
 
-        $scope.clickButton = function() {
-            $scope.names=[];
-            $interval(function () {
-                if(i <= 100) {
-                    $http.get("/get-data", {params: {"param1": i}})
-                            .then(function (response) {
-                                i++;
-                                $scope.names.push(response.data);
-                                if (i>20)
-                                    $scope.names.shift();
-                            });
+        var timer;
+        $scope.i=0;
+        $scope.names=[];
+
+        $scope.clickStartButton = function()
+        {
+            timer = $interval(function()
+            {
+                if($scope.i < 100) {
+                    if ($scope.i>=20)
+                        $scope.names.shift();
+                    $http.get("/get-data", {params: {"param1": $scope.i+1}})
+                        .then(function (response) {
+                            $scope.names.push(response.data);
+                            $scope.i++;
+                        });
+
                 }
-            }, 500);
-        }
+
+            },500);
+        };
+
+        $scope.clickPauseButton=function()
+        {
+            if(angular.isDefined(timer))
+            {
+                $interval.cancel(timer);
+                timer=undefined;
+            }
+        };
 
     });
 </script>

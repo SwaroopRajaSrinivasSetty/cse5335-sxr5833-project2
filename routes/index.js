@@ -1,10 +1,7 @@
 var express = require('express');
 var router = express.Router();
-//var mongo = require('mongodb').MongoClient;
-//var objectId = require('mongodb').ObjectID;
 var assert = require('assert');
 
-//var url = 'mongodb://ssetty:ssetty@ds145997.mlab.com:45997/cse5335-sxr5833';
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
