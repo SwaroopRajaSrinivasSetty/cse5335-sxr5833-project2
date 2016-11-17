@@ -10,4 +10,4 @@
   Using animations in angularjs was a little time consuming. This was new for me and I had to read the documentation.
 
 #### d. If you were to use these technologies professionally, what would be your biggest concern?
-  Angularjs is an evolving framework. The libraries that I have used now may become absolete tomorrow, so migration to a newer version would be another project/task.
+  Angularjs is an evolving framework. The libraries that I have used now may become obsolete tomorrow, so migration to a newer version would be another project/task.
