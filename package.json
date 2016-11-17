@@ -1,6 +1,6 @@
 {
-  "name": "CSE5335 project-2",
-  "version": "0.0.1",
+  "name": "untitled",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
