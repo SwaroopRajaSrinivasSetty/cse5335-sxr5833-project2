@@ -3,6 +3,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 <head>
     <style>
         h2 {
@@ -20,7 +21,7 @@
             position: absolute;
             top: 50%;
         }
-
+        /* https://github.com/daneden/animate.css/blob/master/animate.css */
         .bounce {
             animation: bounceIn 0.75s;
         }
@@ -33,6 +34,7 @@
                 transform: scale(1);
             }
         }
+
     </style>
 </head>
 <body>
@@ -50,6 +52,7 @@
     </div>
 
     <div>
+        <!-- Reference : http://www.w3schools.com/angular/angular_tables.asp -->
         <table class="table" ng-if = "names.length > 0">
             <thead>
             <tr>
@@ -98,7 +101,9 @@
         {
             timer = $interval(function()
             {
+                // make 100 ajax requests
                 if($scope.i < 100) {
+                    //display only 20 records at a time
                     if ($scope.i>=20)
                         $scope.names.shift();
                     $http.get("/get-data", {params: {"param1": $scope.i+1}})
@@ -110,7 +115,7 @@
 
             },500);
         };
-
+        // test purpose, not a part of project requirement
         $scope.clickPauseButton=function()
         {
             if(angular.isDefined(timer))

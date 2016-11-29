@@ -31,6 +31,7 @@ module.exports = router;
 router.get('/get-data', function(req, res) {
     var db = req.db;
     var id = req.param('param1');
+    // Get a document from mongodb collection based on id passed as parameter
     var collection = db.get('sacramentoRealEstateTransactions');
     collection.findOne({"id": parseInt(id)},{_id:0},function(e,docs){
         res.json(docs);
