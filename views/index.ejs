@@ -47,7 +47,7 @@
         <button class="btn btn-info btn-lg" ng-click="clickPauseButton()">Pause</button>
         <h5>Count of AJAX requests : {{i}}</h5>
         <br>
-        </div>
+    </div>
 
     <div>
         <table class="table" ng-if = "names.length > 0">
@@ -104,9 +104,8 @@
                     $http.get("/get-data", {params: {"param1": $scope.i+1}})
                         .then(function (response) {
                             $scope.names.push(response.data);
-                            $scope.i++;
                         });
-
+                    $scope.i++;
                 }
 
             },500);
